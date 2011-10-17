@@ -42,7 +42,8 @@ internal_code = set()
 # concatenate a list of strings and convert them to unicode.
 # unfortunately there is a bug in python 2.4 and lower that causes
 # unicode.join trash the traceback.
-_concat = u''.join
+def _concat(seq):
+    return u''.join(imap(unicode, seq))
 try:
     def _test_gen_bug():
         raise TypeError(_test_gen_bug)
