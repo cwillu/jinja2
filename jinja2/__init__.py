@@ -43,7 +43,7 @@ from jinja2.bccache import BytecodeCache, FileSystemBytecodeCache, \
 
 # undefined types
 from jinja2.runtime import Undefined, DebugUndefined, StrictUndefined, \
-     LaxUndefined, LaxDebugUndefined
+     LaxUndefined, DebugLaxUndefined
 
 # exceptions
 from jinja2.exceptions import TemplateError, UndefinedError, \
@@ -62,9 +62,10 @@ __all__ = [
     'PackageLoader', 'DictLoader', 'FunctionLoader', 'PrefixLoader',
     'ChoiceLoader', 'BytecodeCache', 'FileSystemBytecodeCache',
     'MemcachedBytecodeCache', 'Undefined', 'DebugUndefined',
-    'StrictUndefined', 'TemplateError', 'UndefinedError', 'TemplateNotFound',
-    'TemplatesNotFound', 'TemplateSyntaxError', 'TemplateAssertionError',
-    'ModuleLoader', 'environmentfilter', 'contextfilter', 'Markup', 'escape',
+    'StrictUndefined', 'LaxUndefined', 'DebugLaxUndefined', 'TemplateError',
+    'UndefinedError', 'TemplateNotFound', 'TemplatesNotFound', 
+    'TemplateSyntaxError', 'TemplateAssertionError', 'ModuleLoader', 
+    'environmentfilter', 'contextfilter', 'Markup', 'escape',
     'environmentfunction', 'contextfunction', 'clear_caches', 'is_undefined',
     'evalcontextfilter', 'evalcontextfunction'
 ]
