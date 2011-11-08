@@ -43,7 +43,12 @@ internal_code = set()
 # unfortunately there is a bug in python 2.4 and lower that causes
 # unicode.join trash the traceback.
 def _concat(seq):
-    return u''.join(imap(unicode, seq))
+    out = []
+    for value in seq:
+        if isinstance(value, str):
+            value = value.decode('utf8')
+        out.append(unicode(value))
+    return u''.join(out)
 try:
     def _test_gen_bug():
         raise TypeError(_test_gen_bug)
