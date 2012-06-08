@@ -9,7 +9,7 @@
     :license: BSD, see LICENSE for more details.
 """
 import re
-from jinja2.runtime import Undefined
+from jinja2.runtime import Undefined, LaxUndefined
 
 try:
     from collections import Mapping as MappingType
@@ -61,12 +61,12 @@ def test_defined(value):
     See the :func:`default` filter for a simple way to set undefined
     variables.
     """
-    return not isinstance(value, Undefined)
+    return not isinstance(value, (Undefined, LaxUndefined))
 
 
 def test_undefined(value):
     """Like :func:`defined` but the other way round."""
-    return isinstance(value, Undefined)
+    return isinstance(value, (Undefined, LaxUndefined))
 
 
 def test_none(value):

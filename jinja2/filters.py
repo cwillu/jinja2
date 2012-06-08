@@ -14,7 +14,7 @@ from random import choice
 from operator import itemgetter
 from itertools import imap, groupby
 from jinja2.utils import Markup, escape, pformat, urlize, soft_unicode
-from jinja2.runtime import Undefined
+from jinja2.runtime import Undefined, LaxUndefined
 from jinja2.exceptions import FilterArgumentError
 
 
@@ -250,7 +250,7 @@ def do_default(value, default_value=u'', boolean=False):
 
         {{ ''|default('the string was empty', true) }}
     """
-    if (boolean and not value) or isinstance(value, Undefined):
+    if (boolean and not value) or isinstance(value, (Undefined, LaxUndefined)):
         return default_value
     return value
 
