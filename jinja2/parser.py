@@ -14,7 +14,7 @@ from jinja2.utils import next
 from jinja2.lexer import describe_token, describe_token_expr
 
 
-#: statements that callinto 
+#: statements that callinto
 _statement_keywords = frozenset(['for', 'if', 'block', 'extends', 'print',
                                  'macro', 'include', 'from', 'import',
                                  'set'])
@@ -77,7 +77,7 @@ class Parser(object):
 
         if self._tag_stack:
             message.append('The innermost block that needs to be '
-                           'closed is \'%s\'.' % self._tag_stack[-1])
+                           'closed is \'%s\' on line %s.' % self._tag_stack[-1])
 
         self.fail(' '.join(message), lineno)
 
@@ -115,7 +115,7 @@ class Parser(object):
         token = self.stream.current
         if token.type != 'name':
             self.fail('tag name expected', token.lineno)
-        self._tag_stack.append(token.value)
+        self._tag_stack.append((token.value, token.lineno))
         pop_tag = True
         try:
             if token.value in _statement_keywords:
